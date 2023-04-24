@@ -10,6 +10,9 @@ function Layout({ children }) {
                 <Link href="/articles">
                     <h3>Нийтлэл</h3>
                 </Link>
+                <Link href="articles/create">
+                    <h3>Create</h3>
+                </Link>
             </section>
             <section className="w-full">{children}</section>
         </section>
