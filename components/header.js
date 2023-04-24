@@ -7,7 +7,7 @@ function Header() {
                 <h3 className="text-white mt-[28px] ml-[70px] text-xl not-italic font-bold">RUNO</h3>
             </div>
             <ul className="text-white flex ml-[680px] mt-[28px] text-xs not-italic font-bold">
-                <li className="ml-[36px]"><Link href="/admin">home</Link></li>
+                <li className="ml-[36px]"><Link href="/">home</Link></li>
                 <li className="ml-[36px]">about</li>
                 <li className="ml-[36px]">articles</li>
                 <li className="ml-[36px]">Contact us</li>
