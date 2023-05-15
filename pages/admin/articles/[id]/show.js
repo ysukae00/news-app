@@ -75,11 +75,18 @@ function ArticleDetail(props) {
                         </section>
                     </div>
                 </section>
-                <section className="w-full mt-5">
-                    <h3>Status</h3>
-                    <p className={`${styles.create__input_text} mt-2`}>
-                        {article?.status || ''}
-                    </p>
+                <section className="flex flex-row items-center justify-between w-full mt-5">
+                    <p>Status</p>
+                    <div className="w-2/3">
+                        <section className="border border-[#CBD5E1] w-2/3 outline-none px-2 py-1 rounded">
+                            <select name="tag" className="w-full border-none outline-none" disabled>
+                                <option selected value="status">
+                                    Published
+                                </option>
+                                <option value="Unpublished">Unpublished</option>
+                            </select>
+                        </section>
+                    </div>
                 </section>
                 <section>
                     <p>Зураг</p>

@@ -3,6 +3,7 @@ import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import { BiShow } from 'react-icons/bi'
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Layout from '../../../components/layout';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -48,7 +49,7 @@ function Articles() {
         <main className="m-4">
             <section className="w-full flex justify-between items-center mb-4">
                 <h1 className="text-lg">Нийтлэл</h1>
-                <button onClick={() => router.push('/articles/create')} className="btn">
+                <button onClick={() => router.push('/admin/articles/create')} className="btn">
                     Нэмэх
                 </button>
             </section>
@@ -79,8 +80,8 @@ function Articles() {
                                     <td>
                                         <div className="flex gap-4">
                                             <button onClick={() => deleteArticle(post._id)}><AiOutlineDelete /></button>
-                                            <button onClick={() => router.push(`/articles/${post._id}/edit`)}><AiOutlineEdit /></button>
-                                            <button onClick={() => router.push(`/articles/${post._id}/show`)}><BiShow /></button>
+                                            <button onClick={() => router.push(`/admin/articles/${post._id}/edit`)}><AiOutlineEdit /></button>
+                                            <button onClick={() => router.push(`/admin/articles/${post._id}/show`)}><BiShow /></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -92,5 +93,11 @@ function Articles() {
         </main>
     );
 }
+
+
+
+Articles.getLayout = function getLayout(page) {
+    return <Layout>{page}</Layout>
+};
 
 export default Articles;

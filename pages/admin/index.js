@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import UserModal from '../../components/UserModel';
+import Layout from '../../components/layout';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -161,3 +162,7 @@ export default function Home() {
         </div>
     );
 }
+
+Home.getLayout = function getLayout(page) {
+    return <Layout>{page}</Layout>
+};

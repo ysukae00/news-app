@@ -7,7 +7,8 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 function UserModal(props) {
     const [username, setUsername] = useState('');
     const [lastname, setLastName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumber, setPhonenumber] = useState('');
+    const [password, setpassword] = useState('');
     const [error, setError] = useState('');
 
     const { isOpen, btnTitle, onClose, onSubmitAction, editUserId } = props;
@@ -29,10 +30,11 @@ function UserModal(props) {
         }
 
         // Edit, Hadgalah
-        await onSubmitAction(username, lastname, phoneNumber);
+        await onSubmitAction(username, lastname, phoneNumber, password);
         setUsername('');
         setLastName('');
-        setPhoneNumber('');
+        setPhonenumber('');
+        setpassword('');
     }
 
     useEffect(() => {
@@ -105,14 +107,27 @@ function UserModal(props) {
                                         />
                                     </section>
                                     <section className="flex flex-col mt-2">
-                                        <label htmlFor="">Утасны дугаар</label>
+                                        <label htmlFor="">phoneNumber</label>
                                         <input
                                             type="number"
                                             className="border border-black rounded py-1 px-2 mt-1.5"
-                                            name="lastname"
+                                            name="Phonenumber"
                                             value={phoneNumber}
                                             onChange={(e) => {
-                                                setPhoneNumber(e.target.value);
+                                                setPhonenumber(e.target.value);
+                                                setError('');
+                                            }}
+                                        />
+                                    </section>
+                                    <section className="flex flex-col mt-2">
+                                        <label htmlFor="">password</label>
+                                        <input
+                                            type="password"
+                                            className="border border-black rounded py-1 px-2 mt-1.5"
+                                            name="password"
+                                            value={password}
+                                            onChange={(e) => {
+                                                setpassword(e.target.value);
                                                 setError('');
                                             }}
                                         />

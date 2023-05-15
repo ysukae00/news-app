@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import styles from './create.module.css';
+import Layout from '../../../components/layout';
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 function ArticleCreate() {
@@ -26,7 +27,7 @@ function ArticleCreate() {
                 pauseOnHover: false,
                 progress: undefined,
             });
-            router.push('/articles');
+            router.push('/admin/articles');
         });
         console.log('data', data);
     }
@@ -76,13 +77,23 @@ function ArticleCreate() {
                             </section>
                         </div>
                     </section>
-                    <section className="mt-5 flex flex-row items-center justify-between w-full">
+                    <section className="flex flex-row items-center justify-between w-full mt-5">
                         <p>Status</p>
-                        <input
-                            name="status"
-                            onChange={onChange}
-                            className={`${styles.create__input_text} border border-[#CBD5E1] w-2/3 outline-none px-3 py-1 rounded`}
-                        />
+                        <div className="w-2/3">
+                            <section className="border border-[#CBD5E1] w-2/3 outline-none px-2 py-1 rounded">
+                                <select
+                                    name="status"
+                                    className="w-full border-none outline-none"
+                                    onChange={onChange}
+                                    defaultValue
+                                >
+                                    <option selected value="Published">
+                                        Published
+                                    </option>
+                                    <option value="Unpublished">Unpublished</option>
+                                </select>
+                            </section>
+                        </div>
                     </section>
                     <section className="flex flex-row items-center justify-between w-full mt-5">
                         <p>Зураг</p>
@@ -101,5 +112,10 @@ function ArticleCreate() {
         </section>
     );
 }
+ArticleCreate.getLayout = function getLayout(page) {
+    return <Layout>{page}</Layout>
+};
 
 export default ArticleCreate;
+
+

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import styles from '../create.module.css';
+import Layout from '../../../../components/layout';
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export async function getServerSideProps(context) {
@@ -11,6 +12,7 @@ export async function getServerSideProps(context) {
 }
 
 function ArticleEdit(props) {
+    const router = useRouter();
     const { id } = props;
     const [article, setArticle] = useState({});
 
@@ -43,7 +45,7 @@ function ArticleEdit(props) {
                 pauseOnHover: false,
                 progress: undefined,
             });
-            router.push('/articles');
+            router.push('/admin/articles');
         });
     }
 
@@ -95,6 +97,24 @@ function ArticleEdit(props) {
                         </div>
                     </section>
                     <section className="flex flex-row items-center justify-between w-full mt-5">
+                        <p>Status</p>
+                        <div className="w-2/3">
+                            <section className="border border-[#CBD5E1] w-2/3 outline-none px-2 py-1 rounded">
+                                <select
+                                    name="status"
+                                    onChange={onChange}
+                                    className="w-full border-none outline-none"
+                                    defaultValue
+                                >
+                                    <option selected value="Published">
+                                        Published
+                                    </option>
+                                    <option value="Unpublished">Unpublished</option>
+                                </select>
+                            </section>
+                        </div>
+                    </section>
+                    <section className="flex flex-row items-center justify-between w-full mt-5">
                         <p>Зураг</p>
                         <input
                             value={article?.image || ''}
@@ -112,5 +132,9 @@ function ArticleEdit(props) {
         </section>
     );
 }
+
+ArticleEdit.getLayout = function getLayout(page) {
+    return <Layout>{page}</Layout>
+};
 
 export default ArticleEdit;
